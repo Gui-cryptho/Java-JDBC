@@ -94,8 +94,12 @@ public class SellerDAOJDBC implements SellerDAO {
                     "WHERE Id = ?");
 
             st.setInt(1, id);
-            st.executeUpdate();
 
+            int rowsAffected = st.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new ExceptionDB("Id not found!");
+            }
 
         }catch (SQLException e){
             throw new ExceptionDB(e.getMessage());
