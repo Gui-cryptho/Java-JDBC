@@ -4,9 +4,17 @@ import model.dao.DepartmentDAO;
 import model.entities.Department;
 import model.entities.Seller;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class DepartmentDAOJDBC implements DepartmentDAO {
+
+    private Connection conn = null;
+
+    public DepartmentDAOJDBC(Connection conn) {
+        this.conn = conn;
+    }
+
     @Override
     public void insert(Seller obj) {
 
